@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>MadrascityPropertiesAvadi</title>
+
+<style>
+
+/* THEME */
+
+:root{
+--bg:#f4f4f4;
+--text:#000;
+--card:#ffffff;
+--header:#1f6feb;
+}
+
+.dark{
+--bg:#1e1e1e;
+--text:#fff;
+--card:#2c2c2c;
+--header:#111;
+}
+
+body{
+margin:0;
+font-family:Arial;
+background:var(--bg);
+color:var(--text);
+transition:.4s;
+}
+
+/* NAVBAR */
+
+.navbar{
+display:flex;
+justify-content:space-between;
+align-items:center;
+background:var(--header);
+color:white;
+padding:10px 25px;
+}
+
+.logo img{
+height:40px;
+}
+
+.nav-links a{
+color:white;
+margin-left:20px;
+text-decoration:none;
+font-weight:bold;
+cursor:pointer;
+}
+
+/* TITLE */
+
+.title{
+text-align:center;
+font-size:40px;
+font-weight:bold;
+padding:15px;
+background:#2b7de9;
+color:white;
+letter-spacing:2px;
+}
+
+/* HERO */
+
+.hero{
+background:#333;
+color:white;
+text-align:center;
+padding:50px 20px;
+animation:fadeHero 1s ease;
+}
+
+.hero h1{
+font-size:34px;
+margin-bottom:20px;
+}
+
+/* LOCATIONS */
+
+.locations{
+font-size:22px;
+font-weight:bold;
+color:#ffd700;
+margin-top:10px;
+}
+
+/* TAMIL SLOGAN */
+
+.tamil-slogan{
+
+font-size:26px;
+font-weight:bold;
+color:#ffffff;
+margin-top:15px;
+
+text-shadow:
+2px 2px 0 #000,
+3px 3px 5px #000;
+
+}
+
+/* PROFILE */
+
+.profile{
+background:var(--card);
+text-align:center;
+padding:30px;
+}
+
+.profile img{
+width:120px;
+border-radius:50%;
+}
+
+/* BUTTONS */
+
+.buttons{
+margin-top:15px;
+}
+
+.buttons a{
+
+color:white;
+padding:10px 18px;
+border-radius:6px;
+text-decoration:none;
+margin:5px;
+display:inline-block;
+font-weight:bold;
+transition:.3s;
+
+}
+
+.call-btn{background:#28a745;}
+.whatsapp-btn{background:#25D366;}
+.youtube-btn{background:#ff0000;}
+.instagram-btn{background:#e1306c;}
+
+.buttons a:hover{
+transform:scale(1.1);
+}
+
+/* SEARCH */
+
+.search{
+text-align:center;
+margin:20px;
+}
+
+.search input{
+padding:10px;
+width:300px;
+border-radius:5px;
+border:1px solid #ccc;
+}
+
+/* PROPERTY CARDS */
+
+.container{
+display:flex;
+flex-wrap:wrap;
+justify-content:center;
+padding:20px;
+}
+
+.card{
+width:260px;
+background:var(--card);
+margin:15px;
+border-radius:10px;
+overflow:hidden;
+box-shadow:0 0 10px #999;
+transition:.4s;
+cursor:pointer;
+animation:fadeUp .8s ease;
+}
+
+.card:hover{
+transform:translateY(-10px) scale(1.05);
+box-shadow:0 15px 30px rgba(0,0,0,0.3);
+}
+
+.card img{
+width:100%;
+height:180px;
+object-fit:cover;
+}
+
+.card-content{
+padding:10px;
+text-align:center;
+}
+
+button{
+background:green;
+color:white;
+border:none;
+padding:8px 15px;
+border-radius:5px;
+cursor:pointer;
+}
+
+/* MAP */
+
+.map{
+background:var(--card);
+padding:40px;
+text-align:center;
+}
+
+iframe{
+width:90%;
+height:300px;
+border-radius:10px;
+border:0;
+}
+
+/* FOOTER */
+
+.footer{
+background:#222;
+color:white;
+text-align:center;
+padding:20px;
+}
+
+/* ANIMATIONS */
+
+@keyframes fadeHero{
+from{
+opacity:0;
+transform:translateY(-40px);
+}
+to{
+opacity:1;
+transform:translateY(0);
+}
+}
+
+@keyframes fadeUp{
+from{
+opacity:0;
+transform:translateY(40px);
+}
+to{
+opacity:1;
+transform:translateY(0);
+}
+}
+
+/* PAGE TRANSITION */
+
+body.fade-out{
+opacity:0;
+transition:opacity .4s ease;
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+
+<div class="navbar">
+
+<div class="logo">
+<img src="logo.png">
+</div>
+
+<div class="nav-links">
+
+<a onclick="toggleTheme()">🌙 Theme</a>
+
+<a href="tel:7339652776">📞 Call</a>
+
+</div>
+
+</div>
+
+<!-- TITLE -->
+
+<div class="title">
+MADRAS CITY PROPERTIES.COM
+</div>
+
+<!-- HERO -->
+
+<div class="hero">
+
+<h1>
+FIND YOUR DREAM PLOT IN AND AROUND CHENNAI
+</h1>
+
+<div class="locations">
+
+AVADI | POONAMALLE | OMR SIRUSERI | THIRUMAZHISAI |
+GERUGAMBAKKAM | SP KOVIL
+
+</div>
+
+<div class="tamil-slogan">
+
+இன்றைய முதலீடு நாளைய கனவு இல்லம்..
+
+</div>
+
+</div>
+
+<!-- PROFILE -->
+
+<div class="profile">
+
+<img src="PHOTO.jpeg">
+
+<h2>Mr. T. Meenakshi Sundaram</h2>
+
+<p>General Manager</p>
+
+<div class="buttons">
+
+<a class="call-btn" href="tel:7339652776">📞 Call Now</a>
+
+<a class="whatsapp-btn"
+href="https://wa.me/917339652776?text=Plot%20Enquiry">
+💬 WhatsApp
+</a>
+
+<a class="youtube-btn"
+href="https://youtube.com/@universaldreamplots"
+target="_blank">
+▶ YouTube Channel
+</a>
+
+<a class="instagram-btn"
+href="https://www.instagram.com/sundartmmeenakshi"
+target="_blank">
+📷 Instagram Profile
+</a>
+
+</div>
+
+</div>
+
+<!-- SEARCH -->
+
+<div class="search">
+
+<input type="text"
+id="searchInput"
+placeholder="Search plots..."
+onkeyup="searchPlots()">
+
+</div>
+
+<!-- PROPERTY LIST -->
+
+<div class="container" id="plots"></div>
+
+<!-- MAP -->
+
+<div class="map">
+
+<h2>Office Location</h2>
+
+<iframe src="https://maps.google.com/maps?q=paruthipattu&t=&z=15&output=embed"></iframe>
+
+<br><br>
+
+<a href="https://maps.app.goo.gl/wmLLyMKPGeHFjxHf6" target="_blank">
+
+<button>Open in Google Maps</button>
+
+</a>
+
+</div>
+
+<div class="footer">
+
+<p>© Madras City Properties | All Rights Reserved</p>
+
+</div>
+
+<script>
+
+/* DARK THEME */
+
+function toggleTheme(){
+document.body.classList.toggle("dark")
+}
+
+/* PROPERTY DATA */
+
+const plots=[
+
+["RAINBOW GARDEN","Avadi"],
+["GARDENIA","Soranjeri Avadi"],
+["GREEN FIELD","Avadi"],
+["SINGAPORE SMART CITY","Avadi"],
+["PANDIAN ELITE GARDEN","Avadi"],
+["VARSHA GARDEN","Paruthipattu"],
+["R R CHENDUR PARADISE","Paruthipattu"],
+["CHENDUR AVENUE","Kannapalaiyam"],
+["VALLALAR NAGAR","Kavarapalayam"],
+["KANNAPA NAGAR","Pattabiram"],
+["VARSHA MASLIAMANI NAGAR","Parivakkam"],
+["JJ ROYAL ENCLAVE","Siruseri OMR"],
+["SRI SUBRAMANYAPURAM NAGAR","Thirunindravur"],
+["JJ GOLDEN CITY","Veppampattu"],
+["SRI RAGAVENDRA GARDEN ANNEX","Thirunindravur"],
+["SVS NAGAR","Singaperumal Kovil"],
+["EASWARI GARDEN","Padappai"],
+["SAPTHAGIRI NAGAR","Thiruvallur"],
+["SRI SAI CITY","Palavedu Avadi"],
+["JJ GOLDEN PARADISE","Veppampattu"],
+["SARAVANA GARDEN","Thirunindravur"],
+["ORCHID CASTLE","Malayambakkam Poonamallee"],
+["VARSHA GOLDEN GATE","Thirumazhisai"],
+["SAI KUMARAN NAGAR","Pothur"],
+["SHRI KAILASH GARDEN","Gerugambakkam"],
+["EMPIRE ELITE GARDEN","Kannapalaiyam Avadi"],
+["TEMPLE CITY","Kundrathur"]
+
+]
+
+const container=document.getElementById("plots")
+
+plots.forEach((plot,i)=>{
+
+container.innerHTML+=`
+
+<div class="card">
+
+<img src="images/plot${i+1}.jpeg">
+
+<div class="card-content">
+
+<h3>${plot[0]}</h3>
+
+<p>${plot[1]}</p>
+
+<a href="site${i+1}.html" class="view-btn">
+
+<button>View Details</button>
+
+</a>
+
+</div>
+
+</div>
+
+`
+
+})
+
+/* SEARCH */
+
+function searchPlots(){
+
+let input=document.getElementById("searchInput").value.toLowerCase()
+
+let cards=document.getElementsByClassName("card")
+
+for(let i=0;i<cards.length;i++){
+
+let title=cards[i].innerText.toLowerCase()
+
+if(title.includes(input)){
+cards[i].style.display="block"
+}else{
+cards[i].style.display="none"
+}
+
+}
+
+}
+
+/* PAGE TRANSITION */
+
+document.querySelectorAll(".view-btn").forEach(link=>{
+link.addEventListener("click",function(e){
+
+e.preventDefault()
+
+document.body.classList.add("fade-out")
+
+setTimeout(()=>{
+window.location=this.href
+},400)
+
+})
+})
+
+</script>
+
+</body>
+</html>

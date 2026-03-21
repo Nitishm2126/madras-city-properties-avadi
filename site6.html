@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>VARSHA Garden | Madras City Properties</title>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<style>
+
+:root{
+--bg:#f4f4f4;
+--card:#ffffff;
+--text:#333;
+--header:#0d6efd;
+}
+
+.dark{
+--bg:#1e1e1e;
+--card:#2c2c2c;
+--text:#ffffff;
+--header:#111;
+}
+
+body{
+margin:0;
+font-family:Segoe UI,Arial;
+background:var(--bg);
+color:var(--text);
+}
+
+header{
+background:var(--header);
+color:white;
+text-align:center;
+padding:25px;
+position:relative;
+}
+
+.theme-btn{
+position:absolute;
+right:20px;
+top:20px;
+background:#222;
+color:white;
+border:none;
+padding:8px 12px;
+border-radius:5px;
+cursor:pointer;
+}
+
+.container{
+max-width:1100px;
+margin:auto;
+padding:20px;
+}
+
+.layout img{
+width:100%;
+max-width:650px;
+height:350px;
+object-fit:cover;
+border-radius:10px;
+box-shadow:0 0 10px #aaa;
+display:block;
+margin:auto;
+cursor:pointer;
+}
+
+/* GALLERY */
+
+.gallery{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+gap:15px;
+margin-top:20px;
+}
+
+.gallery img{
+width:100%;
+height:200px;
+object-fit:cover;
+border-radius:10px;
+box-shadow:0 0 10px #bbb;
+cursor:pointer;
+}
+
+/* VIEWER */
+
+.viewer{
+display:none;
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,0.9);
+justify-content:center;
+align-items:center;
+z-index:9999;
+}
+
+.viewer img{
+max-width:90%;
+max-height:90%;
+}
+
+.close{
+position:absolute;
+top:20px;
+right:40px;
+font-size:40px;
+color:white;
+cursor:pointer;
+}
+
+.prev,.next{
+position:absolute;
+top:50%;
+font-size:50px;
+color:white;
+cursor:pointer;
+}
+
+.prev{ left:20px }
+.next{ right:20px }
+
+/* AMENITIES */
+
+.amenities{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+gap:15px;
+margin-top:25px;
+}
+
+.amenity{
+background:var(--card);
+padding:15px;
+border-radius:10px;
+text-align:center;
+box-shadow:0 0 10px #ccc;
+}
+
+.amenity i{
+font-size:28px;
+color:#0d6efd;
+margin-bottom:10px;
+}
+
+/* DETAILS */
+
+.details{
+background:var(--card);
+padding:25px;
+margin-top:25px;
+border-radius:15px;
+box-shadow:0 0 10px #ccc;
+display:flex;
+flex-wrap:wrap;
+gap:40px;
+justify-content:space-between;
+align-items:center;
+}
+
+/* PRICING */
+
+.pricing{
+display:flex;
+gap:30px;
+}
+
+.price-card{
+background:#ffd800;
+border-radius:30px;
+padding:40px 25px;
+width:200px;
+text-align:center;
+box-shadow:0 10px 25px rgba(0,0,0,0.2);
+position:relative;
+}
+
+.ribbon{
+position:absolute;
+top:-10px;
+left:-10px;
+background:red;
+color:white;
+padding:5px 15px;
+font-size:12px;
+font-weight:bold;
+transform:rotate(-20deg);
+border-radius:5px;
+}
+
+.price-head{
+font-size:30px;
+font-weight:900;
+color:red;
+text-shadow:2px 2px 0 white;
+}
+
+.price-number{
+font-size:90px;
+font-weight:900;
+color:black;
+-webkit-text-stroke:5px white;
+margin:10px 0;
+}
+
+.price-text{
+font-size:26px;
+font-weight:900;
+color:red;
+-webkit-text-stroke:1px white;
+}
+
+.price-bottom{
+font-size:16px;
+font-weight:bold;
+color:red;
+letter-spacing:1px;
+}
+
+/* BUTTONS */
+
+.buttons{
+text-align:center;
+margin-top:20px;
+}
+
+button{
+border:none;
+padding:10px 20px;
+margin:5px;
+border-radius:5px;
+cursor:pointer;
+font-size:15px;
+color:white;
+}
+
+.call{background:#28a745;}
+.whatsapp{background:#25D366;}
+.back{background:#0d6efd;}
+
+/* ENQUIRY */
+
+.enquiry{
+background:var(--card);
+margin-top:30px;
+padding:25px;
+border-radius:15px;
+box-shadow:0 0 10px #ccc;
+max-width:500px;
+margin:auto;
+}
+
+.form-group{
+margin-bottom:15px;
+}
+
+.form-group input,
+.form-group textarea{
+width:100%;
+padding:10px;
+border-radius:8px;
+border:1px solid #ccc;
+font-size:15px;
+}
+
+.send-btn{
+background:#25D366;
+color:white;
+border:none;
+padding:12px;
+width:100%;
+border-radius:8px;
+font-size:16px;
+cursor:pointer;
+}
+
+/* MAP */
+
+.map{
+margin-top:40px;
+text-align:center;
+}
+
+iframe{
+width:100%;
+height:300px;
+border-radius:10px;
+border:0;
+}
+
+footer{
+background:#222;
+color:white;
+text-align:center;
+padding:20px;
+margin-top:40px;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<header>
+
+<h1>VARSHA GARDEN</h1>
+<p>Avadi, Chennai</p>
+
+<button class="theme-btn" onclick="toggleTheme()">🌙 Theme</button>
+
+</header>
+
+<div class="container">
+
+<h2>Layout Plan</h2>
+
+<div class="layout">
+<img src="images/layout/lay6.jpeg" onclick="openViewer(3)">
+</div>
+
+<h2>Site Photos</h2>
+
+<div class="gallery">
+
+<img src="images/siteimg/plot6-1.jpeg" onclick="openViewer(0)">
+<img src="images/siteimg/plot6-2.jpeg" onclick="openViewer(1)">
+<img src="images/siteimg/plot6-3.jpeg" onclick="openViewer(2)">
+
+</div>
+
+<div id="viewer" class="viewer">
+
+<span class="close" onclick="closeViewer()">×</span>
+<span class="prev" onclick="changeImage(-1)">❮</span>
+
+<img id="viewerImg">
+
+<span class="next" onclick="changeImage(1)">❯</span>
+
+</div>
+
+<h2>Amenities</h2>
+
+<div class="amenities">
+
+<div class="amenity"><i class="fa-solid fa-road"></i><p>Black Top Road</p></div>
+<div class="amenity"><i class="fa-solid fa-bolt"></i><p>Electricity</p></div>
+<div class="amenity"><i class="fa-solid fa-solar-panel"></i><p>Solar Street Lights</p></div>
+<div class="amenity"><i class="fa-solid fa-shield-halved"></i><p>Gated Community</p></div>
+<div class="amenity"><i class="fa-solid fa-water"></i><p>Water Facility</p></div>
+
+</div>
+
+<div class="details">
+
+<div>
+
+<h3>Project Details</h3>
+
+<p><b>Project Name:</b> VARSHA GARDEN</p>
+<p><b>Location:</b> Paruthipattu,AVADI</p>
+<p><b>Contact:</b> 7339652776</p>
+
+<p>
+CMDA & RERA Approved.<br>
+80% Bank Loan Available.<br>
+Fully Compound Wall.<br>
+Fast developing residential location.
+</p>
+
+</div>
+
+<div class="pricing">
+
+<div class="price-card">
+
+<div class="ribbon">BEST OFFER</div>
+
+<div class="price-head">PLOTS</div>
+<div class="price-number">31</div>
+<div class="price-text">LAKHS</div>
+<div class="price-bottom">ONWARDS</div>
+
+</div>
+
+<div class="price-card">
+
+<div class="ribbon">BEST OFFER</div>
+
+<div class="price-head">HOUSE</div>
+<div class="price-number">51</div>
+<div class="price-text">LAKHS</div>
+<div class="price-bottom">ONWARDS</div>
+
+</div>
+
+</div>
+
+</div>
+
+<h2 style="text-align:center;margin-top:30px;">Customer Enquiry</h2>
+
+<div class="enquiry">
+
+<form onsubmit="sendWhatsApp(event)">
+
+<div class="form-group">
+<label>Name</label>
+<input type="text" id="name" required>
+</div>
+
+<div class="form-group">
+<label>Mobile Number</label>
+<input type="tel" id="phone" required>
+</div>
+
+<div class="form-group">
+<label>Message</label>
+<textarea id="message">VARSHA GARDEN Enquiry</textarea>
+</div>
+
+<button class="send-btn">
+<i class="fa-brands fa-whatsapp"></i> Send Enquiry
+</button>
+
+</form>
+
+</div>
+
+<div class="buttons">
+
+<a href="tel:7339652776">
+<button class="call"><i class="fa-solid fa-phone"></i> Call Now</button>
+</a>
+
+<a href="https://wa.me/917339652776?text=Rainbow%20Garden%20Enquiry">
+<button class="whatsapp"><i class="fa-brands fa-whatsapp"></i> WhatsApp</button>
+</a>
+
+<a href="index.html">
+<button class="back"><i class="fa-solid fa-arrow-left"></i> Back to Home</button>
+</a>
+
+</div>
+
+<div class="map">
+
+<h2>Office Location</h2>
+
+<iframe src="https://maps.google.com/maps?q=paruthipattu&t=&z=15&output=embed"></iframe>
+
+<br><br>
+
+<a href="https://maps.app.goo.gl/wmLLyMKPGeHFjxHf6" target="_blank">
+<button style="background:#0d6efd">Open in Google Maps</button>
+</a>
+
+</div>
+
+</div>
+
+<footer>
+© Madras City Properties | All Rights Reserved
+</footer>
+
+<script>
+
+function toggleTheme(){
+document.body.classList.toggle("dark")
+}
+
+function sendWhatsApp(e){
+
+e.preventDefault()
+
+var name=document.getElementById("name").value
+var phone=document.getElementById("phone").value
+var message=document.getElementById("message").value
+
+var text="Name: "+name+
+"%0AMobile: "+phone+
+"%0AMessage: "+message
+
+var url="https://wa.me/917339652776?text="+text
+
+window.open(url,"_blank")
+
+}
+
+const images=[
+"images/siteimg/plot6-1.jpeg",
+"images/siteimg/plot6-2.jpeg",
+"images/siteimg/plot6-3.jpeg",
+"images/layout/lay6.jpeg"
+];
+
+let index=0;
+
+function openViewer(i){
+index=i;
+document.getElementById("viewerImg").src=images[index];
+document.getElementById("viewer").style.display="flex";
+}
+
+function closeViewer(){
+document.getElementById("viewer").style.display="none";
+}
+
+function changeImage(step){
+index+=step;
+
+if(index<0) index=images.length-1;
+if(index>=images.length) index=0;
+
+document.getElementById("viewerImg").src=images[index];
+}
+
+let startX=0;
+
+document.addEventListener("touchstart",e=>{
+startX=e.touches[0].clientX;
+});
+
+document.addEventListener("touchend",e=>{
+let endX=e.changedTouches[0].clientX;
+
+if(startX-endX>50) changeImage(1);
+if(endX-startX>50) changeImage(-1);
+});
+
+</script>
+
+</body>
+</html>
