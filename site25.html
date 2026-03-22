@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SHRI KAILASH GARDEN | Madras City Properties.com</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<style>
+:root {
+  --gold:#C9A84C;--gold-light:#E8C97A;--dark:#0D0D0D;--dark-2:#161616;
+  --dark-3:#1F1F1F;--dark-4:#2A2A2A;--text:#F0EDE6;--text-muted:#9A9590;
+  --green:#2ECC71;--wa:#25D366;--radius:14px;--transition:0.35s cubic-bezier(.4,0,.2,1);
+}
+body.light{--dark:#F5F2EE;--dark-2:#ECEAE5;--dark-3:#E2DED7;--dark-4:#D4CFC7;--text:#1A1814;--text-muted:#6B6660;}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{font-family:'DM Sans',sans-serif;background:var(--dark);color:var(--text);overflow-x:hidden;min-height:100vh;display:flex;flex-direction:column;}
+::-webkit-scrollbar{width:5px;}
+::-webkit-scrollbar-track{background:var(--dark-2);}
+::-webkit-scrollbar-thumb{background:var(--gold);border-radius:3px;}
+
+/* NAVBAR */
+.navbar{position:fixed;top:0;left:0;right:0;z-index:900;display:flex;justify-content:space-between;align-items:center;padding:14px 40px;background:rgba(13,13,13,0.88);backdrop-filter:blur(18px);border-bottom:1px solid rgba(201,168,76,0.15);}
+body.light .navbar{background:rgba(245,242,238,0.92);}
+.nav-brand{display:flex;align-items:center;gap:10px;text-decoration:none;}
+.nav-brand img{height:36px;}
+.nav-brand-text{display:flex;flex-direction:column;line-height:1.1;}
+.nav-brand-text .b1{font-family:'Playfair Display',serif;font-size:14px;font-weight:700;color:var(--gold);}
+.nav-brand-text .b2{font-size:10px;color:var(--text-muted);letter-spacing:2px;text-transform:uppercase;}
+.nav-right{display:flex;align-items:center;gap:8px;}
+.nav-btn{display:inline-flex;align-items:center;gap:6px;padding:8px 16px;border-radius:8px;font-size:13px;font-weight:500;text-decoration:none;cursor:pointer;transition:var(--transition);border:none;font-family:'DM Sans',sans-serif;}
+.btn-back{background:var(--dark-3);color:var(--text-muted);border:1px solid var(--dark-4);}
+.btn-back:hover{color:var(--text);}
+.btn-call-nav{background:var(--gold);color:var(--dark);font-weight:600;}
+.btn-call-nav:hover{background:var(--gold-light);}
+.btn-theme{background:var(--dark-3);color:var(--text-muted);border:1px solid var(--dark-4);font-size:14px;}
+.btn-theme:hover{color:var(--gold);}
+
+/* MAIN */
+.main{flex:1;display:flex;align-items:center;justify-content:center;padding:100px 24px 60px;position:relative;overflow:hidden;}
+
+/* BG decorative rings */
+.main::before{
+  content:'';position:absolute;width:600px;height:600px;border-radius:50%;
+  border:1px solid rgba(201,168,76,0.07);top:50%;left:50%;
+  transform:translate(-50%,-50%);
+}
+.main::after{
+  content:'';position:absolute;width:400px;height:400px;border-radius:50%;
+  border:1px solid rgba(201,168,76,0.1);top:50%;left:50%;
+  transform:translate(-50%,-50%);
+}
+
+.cs-card{
+  text-align:center;max-width:620px;width:100%;
+  position:relative;z-index:1;
+  animation:fadeUp .8s ease forwards;
+}
+
+@keyframes fadeUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
+
+.cs-plot-img{
+  width:100%;max-height:280px;object-fit:cover;
+  border-radius:16px;margin-bottom:32px;
+  border:1px solid var(--dark-4);
+  box-shadow:0 20px 60px rgba(0,0,0,0.5);
+}
+
+.cs-badge{
+  display:inline-flex;align-items:center;gap:8px;
+  background:rgba(201,168,76,0.12);
+  border:1px solid rgba(201,168,76,0.3);
+  color:var(--gold);font-size:11px;font-weight:700;
+  letter-spacing:3px;text-transform:uppercase;
+  padding:7px 20px;border-radius:30px;
+  margin-bottom:20px;
+}
+
+.cs-dot{
+  width:7px;height:7px;border-radius:50%;
+  background:var(--gold);
+  animation:pulse 1.8s ease infinite;
+}
+
+@keyframes pulse{
+  0%,100%{transform:scale(1);opacity:1;}
+  50%{transform:scale(1.5);opacity:0.5;}
+}
+
+.cs-title{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(28px,5vw,52px);
+  font-weight:900;color:var(--text);
+  line-height:1.1;margin-bottom:10px;
+}
+
+.cs-title span{color:var(--gold);}
+
+.cs-location{
+  display:inline-flex;align-items:center;gap:6px;
+  color:var(--text-muted);font-size:14px;margin-bottom:28px;
+}
+
+.cs-divider{
+  width:60px;height:2px;
+  background:linear-gradient(90deg,transparent,var(--gold),transparent);
+  margin:0 auto 28px;
+}
+
+.cs-desc{
+  font-size:15px;color:var(--text-muted);
+  line-height:1.8;margin-bottom:36px;
+  max-width:480px;margin-left:auto;margin-right:auto;
+}
+
+.cs-actions{
+  display:flex;flex-wrap:wrap;gap:12px;justify-content:center;margin-bottom:36px;
+}
+
+.cs-btn{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:13px 24px;border-radius:10px;
+  font-size:14px;font-weight:600;
+  text-decoration:none;transition:var(--transition);
+  font-family:'DM Sans',sans-serif;border:none;cursor:pointer;
+}
+
+.cs-btn-gold{background:var(--gold);color:var(--dark);box-shadow:0 4px 18px rgba(201,168,76,0.3);}
+.cs-btn-gold:hover{background:var(--gold-light);transform:translateY(-2px);}
+.cs-btn-wa{background:rgba(37,211,102,0.12);color:var(--wa);border:1px solid rgba(37,211,102,0.25);}
+.cs-btn-wa:hover{background:rgba(37,211,102,0.2);transform:translateY(-2px);}
+.cs-btn-outline{background:var(--dark-3);color:var(--text-muted);border:1px solid var(--dark-4);}
+.cs-btn-outline:hover{color:var(--text);transform:translateY(-2px);}
+
+.cs-info-chips{
+  display:flex;flex-wrap:wrap;gap:10px;justify-content:center;
+}
+
+.cs-chip{
+  display:flex;align-items:center;gap:6px;
+  background:var(--dark-2);border:1px solid var(--dark-4);
+  border-radius:25px;padding:7px 14px;
+  font-size:12px;color:var(--text-muted);
+}
+
+.cs-chip i{color:var(--gold);font-size:11px;}
+
+/* FOOTER */
+.site-footer{
+  background:var(--dark-2);border-top:1px solid var(--dark-4);
+  padding:24px 40px;display:flex;align-items:center;
+  justify-content:space-between;flex-wrap:wrap;gap:12px;
+}
+.footer-brand{font-family:'Playfair Display',serif;font-size:15px;color:var(--gold);font-weight:700;}
+.footer-copy{font-size:12px;color:var(--text-muted);}
+
+/* FLOAT WA */
+.float-wa{
+  position:fixed;bottom:26px;right:26px;width:52px;height:52px;
+  background:var(--wa);border-radius:50%;display:flex;align-items:center;
+  justify-content:center;font-size:22px;
+  box-shadow:0 6px 20px rgba(37,211,102,0.4);
+  z-index:800;text-decoration:none;transition:transform .2s;
+}
+.float-wa:hover{transform:scale(1.1);}
+.float-wa::before{
+  content:'';position:absolute;inset:0;border-radius:50%;
+  border:2px solid rgba(37,211,102,0.5);
+  animation:ripple 2s ease infinite;
+}
+@keyframes ripple{0%{transform:scale(1);opacity:1;}100%{transform:scale(1.7);opacity:0;}}
+
+@media(max-width:600px){
+  .navbar{padding:12px 20px;}
+  .nav-brand-text .b1{font-size:12px;}
+  .site-footer{padding:20px;}
+}
+</style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar">
+  <a class="nav-brand" href="index.html">
+    <img src="logo.png" alt="MCP" onerror="this.style.display='none'">
+    <div class="nav-brand-text">
+      <span class="b1">Madras City Properties.com</span>
+      <span class="b2">Avadi Branch</span>
+    </div>
+  </a>
+  <div class="nav-right">
+    <button class="nav-btn btn-theme" onclick="toggleTheme()">☀️</button>
+    <a class="nav-btn btn-back" href="index.html"><i class="fa-solid fa-arrow-left"></i> All Properties</a>
+    <a class="nav-btn btn-call-nav" href="tel:7339652776"><i class="fa-solid fa-phone"></i> Call Now</a>
+  </div>
+</nav>
+
+<!-- MAIN -->
+<main class="main">
+  <div class="cs-card">
+
+    <img src="plot25.jpeg" class="cs-plot-img" alt="SHRI KAILASH GARDEN"
+         onerror="this.style.display='none'">
+
+    <div class="cs-badge"><div class="cs-dot"></div> Coming Soon</div>
+
+    <h1 class="cs-title">SHRI <span>KAILASH GARDEN</span></h1>
+
+    <div class="cs-location">
+      <i class="fa-solid fa-location-dot" style="color:var(--gold)"></i>
+      Gerugambakkam
+    </div>
+
+    <div class="cs-divider"></div>
+
+    <p class="cs-desc">
+      We're preparing something special for this property.<br>
+      Full details, photos, layout plans and pricing will be available very soon.<br>
+      <strong style="color:var(--gold)">Contact us now to get early access & best price!</strong>
+    </p>
+
+    <div class="cs-actions">
+      <a class="cs-btn cs-btn-gold" href="tel:7339652776">
+        <i class="fa-solid fa-phone"></i> Call for Details
+      </a>
+      <a class="cs-btn cs-btn-wa" href="https://wa.me/917339652776?text=SHRI%20KAILASH%20GARDEN%20Enquiry" target="_blank">
+        <i class="fa-brands fa-whatsapp"></i> WhatsApp Us
+      </a>
+      <a class="cs-btn cs-btn-outline" href="index.html">
+        <i class="fa-solid fa-arrow-left"></i> Back to Home
+      </a>
+    </div>
+
+    <div class="cs-info-chips">
+      <div class="cs-chip"><i class="fa-solid fa-certificate"></i> CMDA & RERA Approved</div>
+      <div class="cs-chip"><i class="fa-solid fa-building-columns"></i> 80% Bank Loan</div>
+      <div class="cs-chip"><i class="fa-solid fa-shield-halved"></i> Gated Community</div>
+      <div class="cs-chip"><i class="fa-solid fa-file-contract"></i> Clear Title</div>
+    </div>
+
+  </div>
+</main>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  <div class="footer-brand">Madras City Properties.com</div>
+  <div class="footer-copy">© 2025 All Rights Reserved</div>
+  <a href="index.html" style="font-size:13px;color:var(--gold);text-decoration:none;">← Back to Home</a>
+</footer>
+
+<!-- FLOAT WA -->
+<a class="float-wa" href="https://wa.me/917339652776?text=SHRI%20KAILASH%20GARDEN%20Enquiry" target="_blank">💬</a>
+
+<script>
+function toggleTheme(){
+  document.body.classList.toggle('light');
+  document.querySelector('.btn-theme').textContent =
+    document.body.classList.contains('light') ? '🌙' : '☀️';
+}
+</script>
+</body>
+</html>
