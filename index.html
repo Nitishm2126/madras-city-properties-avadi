@@ -1,266 +1,962 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>MadrascityPropertiesAvadi</title>
-
+<title>Madras City Properties.com – Avadi Branch</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
 
-/* THEME */
-
-:root{
---bg:#f4f4f4;
---text:#000;
---card:#ffffff;
---header:#1f6feb;
+:root {
+  --gold: #C9A84C;
+  --gold-light: #E8C97A;
+  --gold-pale: #F5EDD6;
+  --dark: #0D0D0D;
+  --dark-2: #161616;
+  --dark-3: #1F1F1F;
+  --dark-4: #2A2A2A;
+  --text: #F0EDE6;
+  --text-muted: #9A9590;
+  --green: #2ECC71;
+  --wa: #25D366;
+  --red: #E53935;
+  --pink: #E1306C;
+  --radius: 14px;
+  --transition: 0.35s cubic-bezier(.4,0,.2,1);
 }
 
-.dark{
---bg:#1e1e1e;
---text:#fff;
---card:#2c2c2c;
---header:#111;
+* { margin:0; padding:0; box-sizing:border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: var(--dark);
+  color: var(--text);
+  overflow-x: hidden;
 }
 
-body{
-margin:0;
-font-family:Arial;
-background:var(--bg);
-color:var(--text);
-transition:.4s;
+/* SCROLLBAR */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--dark-2); }
+::-webkit-scrollbar-thumb { background: var(--gold); border-radius: 3px; }
+
+/* ─── NAVBAR ─── */
+.navbar {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 999;
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 16px 48px;
+  background: rgba(13,13,13,0.85);
+  backdrop-filter: blur(18px);
+  border-bottom: 1px solid rgba(201,168,76,0.15);
+  transition: var(--transition);
 }
 
-/* NAVBAR */
-
-.navbar{
-display:flex;
-justify-content:space-between;
-align-items:center;
-background:var(--header);
-color:white;
-padding:10px 25px;
+.navbar.scrolled {
+  padding: 12px 48px;
+  background: rgba(13,13,13,0.96);
 }
 
-.logo img{
-height:40px;
+.logo-wrap {
+  display: flex; align-items: center; gap: 12px;
 }
 
-.nav-links a{
-color:white;
-margin-left:20px;
-text-decoration:none;
-font-weight:bold;
-cursor:pointer;
+.logo-wrap img {
+  height: 42px;
+  filter: brightness(1.1);
 }
 
-/* TITLE */
-
-.title{
-text-align:center;
-font-size:40px;
-font-weight:bold;
-padding:15px;
-background:#2b7de9;
-color:white;
-letter-spacing:2px;
+.logo-text {
+  display: flex; flex-direction: column; line-height: 1.1;
 }
 
-/* HERO */
-
-.hero{
-background:#333;
-color:white;
-text-align:center;
-padding:50px 20px;
-animation:fadeHero 1s ease;
+.logo-text .brand {
+  font-family: 'Playfair Display', serif;
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--gold);
+  letter-spacing: 0.5px;
 }
 
-.hero h1{
-font-size:34px;
-margin-bottom:20px;
+.logo-text .branch {
+  font-size: 10px;
+  color: var(--text-muted);
+  letter-spacing: 2px;
+  text-transform: uppercase;
 }
 
-/* LOCATIONS */
-
-.locations{
-font-size:22px;
-font-weight:bold;
-color:#ffd700;
-margin-top:10px;
+.nav-links {
+  display: flex; align-items: center; gap: 8px;
 }
 
-/* TAMIL SLOGAN */
-
-.tamil-slogan{
-
-font-size:26px;
-font-weight:bold;
-color:#ffffff;
-margin-top:15px;
-
-text-shadow:
-2px 2px 0 #000,
-3px 3px 5px #000;
-
+.nav-links a {
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text-muted);
+  padding: 8px 16px;
+  border-radius: 8px;
+  transition: var(--transition);
+  border: 1px solid transparent;
 }
 
-/* PROFILE */
-
-.profile{
-background:var(--card);
-text-align:center;
-padding:30px;
+.nav-links a:hover {
+  color: var(--text);
+  background: var(--dark-3);
 }
 
-.profile img{
-width:120px;
-border-radius:50%;
+.nav-cta {
+  background: var(--gold) !important;
+  color: var(--dark) !important;
+  font-weight: 600 !important;
+  border-color: transparent !important;
 }
 
-/* BUTTONS */
-
-.buttons{
-margin-top:15px;
+.nav-cta:hover {
+  background: var(--gold-light) !important;
+  transform: translateY(-1px);
 }
 
-.buttons a{
-
-color:white;
-padding:10px 18px;
-border-radius:6px;
-text-decoration:none;
-margin:5px;
-display:inline-block;
-font-weight:bold;
-transition:.3s;
-
+.theme-btn {
+  background: var(--dark-3);
+  border: 1px solid var(--dark-4);
+  color: var(--text-muted);
+  padding: 8px 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: var(--transition);
 }
 
-.call-btn{background:#28a745;}
-.whatsapp-btn{background:#25D366;}
-.youtube-btn{background:#ff0000;}
-.instagram-btn{background:#e1306c;}
+.theme-btn:hover { color: var(--gold); }
 
-.buttons a:hover{
-transform:scale(1.1);
+/* LIGHT THEME */
+body.light {
+  --dark: #F5F2EE;
+  --dark-2: #ECEAE5;
+  --dark-3: #E2DED7;
+  --dark-4: #D4CFC7;
+  --text: #1A1814;
+  --text-muted: #6B6660;
 }
 
-/* SEARCH */
-
-.search{
-text-align:center;
-margin:20px;
+/* ─── HERO ─── */
+.hero {
+  position: relative;
+  height: 100vh;
+  min-height: 600px;
+  overflow: hidden;
 }
 
-.search input{
-padding:10px;
-width:300px;
-border-radius:5px;
-border:1px solid #ccc;
+.hero-slides {
+  position: absolute; inset: 0;
 }
 
-/* PROPERTY CARDS */
-
-.container{
-display:flex;
-flex-wrap:wrap;
-justify-content:center;
-padding:20px;
+.hero-slides img {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity 1.2s ease;
+  transform: scale(1.04);
+  transition: opacity 1.2s ease, transform 6s ease;
 }
 
-.card{
-width:260px;
-background:var(--card);
-margin:15px;
-border-radius:10px;
-overflow:hidden;
-box-shadow:0 0 10px #999;
-transition:.4s;
-cursor:pointer;
-animation:fadeUp .8s ease;
+.hero-slides img.active {
+  opacity: 1;
+  transform: scale(1);
 }
 
-.card:hover{
-transform:translateY(-10px) scale(1.05);
-box-shadow:0 15px 30px rgba(0,0,0,0.3);
+.hero-overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(0,0,0,0.75) 0%,
+    rgba(0,0,0,0.4) 50%,
+    rgba(0,0,0,0.65) 100%
+  );
 }
 
-.card img{
-width:100%;
-height:180px;
-object-fit:cover;
+.hero-content {
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  width: 90%;
+  max-width: 800px;
+  animation: heroIn 1s ease forwards;
 }
 
-.card-content{
-padding:10px;
-text-align:center;
+@keyframes heroIn {
+  from { opacity:0; transform: translate(-50%,-44%); }
+  to   { opacity:1; transform: translate(-50%,-50%); }
 }
 
-button{
-background:green;
-color:white;
-border:none;
-padding:8px 15px;
-border-radius:5px;
-cursor:pointer;
+.hero-badge {
+  display: inline-block;
+  background: rgba(201,168,76,0.15);
+  border: 1px solid rgba(201,168,76,0.4);
+  color: var(--gold);
+  font-size: 11px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  padding: 6px 18px;
+  border-radius: 30px;
+  margin-bottom: 22px;
+  backdrop-filter: blur(10px);
 }
 
-/* MAP */
-
-.map{
-background:var(--card);
-padding:40px;
-text-align:center;
+.hero h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(38px, 6vw, 72px);
+  font-weight: 900;
+  line-height: 1.08;
+  color: #fff;
+  margin-bottom: 10px;
+  text-shadow: 0 2px 30px rgba(0,0,0,0.4);
 }
 
-iframe{
-width:90%;
-height:300px;
-border-radius:10px;
-border:0;
+.hero h1 span { color: var(--gold); }
+
+.hero-sub {
+  font-size: clamp(14px, 2vw, 18px);
+  color: rgba(255,255,255,0.75);
+  margin-bottom: 6px;
+  font-weight: 300;
+  letter-spacing: 0.5px;
 }
 
-/* FOOTER */
-
-.footer{
-background:#222;
-color:white;
-text-align:center;
-padding:20px;
+.hero-locations {
+  display: flex; flex-wrap: wrap; justify-content: center; gap: 8px;
+  margin: 18px 0 24px;
 }
 
-/* ANIMATIONS */
-
-@keyframes fadeHero{
-from{
-opacity:0;
-transform:translateY(-40px);
-}
-to{
-opacity:1;
-transform:translateY(0);
-}
+.hero-locations span {
+  background: rgba(255,255,255,0.1);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255,255,255,0.15);
+  color: rgba(255,255,255,0.85);
+  font-size: 12px;
+  padding: 5px 14px;
+  border-radius: 20px;
+  letter-spacing: 0.5px;
 }
 
-@keyframes fadeUp{
-from{
-opacity:0;
-transform:translateY(40px);
-}
-to{
-opacity:1;
-transform:translateY(0);
-}
+.hero-tamil {
+  font-size: clamp(16px, 2.5vw, 22px);
+  color: var(--gold-light);
+  margin-bottom: 34px;
+  font-weight: 300;
+  text-shadow: 0 1px 10px rgba(0,0,0,0.5);
 }
 
-/* PAGE TRANSITION */
+.hero-actions {
+  display: flex; gap: 14px; justify-content: center; flex-wrap: wrap;
+}
 
-body.fade-out{
-opacity:0;
-transition:opacity .4s ease;
+.btn-primary {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: var(--gold);
+  color: var(--dark);
+  padding: 14px 30px;
+  border-radius: 10px;
+  font-weight: 600;
+  font-size: 14px;
+  text-decoration: none;
+  transition: var(--transition);
+  box-shadow: 0 4px 20px rgba(201,168,76,0.35);
+}
+
+.btn-primary:hover {
+  background: var(--gold-light);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 28px rgba(201,168,76,0.45);
+}
+
+.btn-outline {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: rgba(255,255,255,0.08);
+  color: #fff;
+  padding: 14px 30px;
+  border-radius: 10px;
+  font-weight: 500;
+  font-size: 14px;
+  text-decoration: none;
+  border: 1px solid rgba(255,255,255,0.2);
+  backdrop-filter: blur(10px);
+  transition: var(--transition);
+}
+
+.btn-outline:hover {
+  background: rgba(255,255,255,0.15);
+  transform: translateY(-2px);
+}
+
+/* Slide dots */
+.slide-dots {
+  position: absolute;
+  bottom: 30px; left: 50%;
+  transform: translateX(-50%);
+  display: flex; gap: 8px;
+}
+
+.dot {
+  width: 6px; height: 6px;
+  border-radius: 3px;
+  background: rgba(255,255,255,0.35);
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.dot.active {
+  width: 24px;
+  background: var(--gold);
+}
+
+/* Scroll indicator */
+.scroll-hint {
+  position: absolute;
+  bottom: 38px; right: 48px;
+  display: flex; align-items: center; gap: 8px;
+  color: rgba(255,255,255,0.5);
+  font-size: 11px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  animation: bounce 2s ease infinite;
+}
+
+.scroll-hint::after {
+  content: '';
+  display: block;
+  width: 1px; height: 40px;
+  background: rgba(255,255,255,0.25);
+}
+
+@keyframes bounce {
+  0%,100% { transform: translateY(0); }
+  50% { transform: translateY(6px); }
+}
+
+/* ─── SEARCH ─── */
+.search-wrap {
+  max-width: 720px;
+  margin: -36px auto 0;
+  padding: 0 24px;
+  position: relative;
+  z-index: 10;
+}
+
+.search-box {
+  display: flex;
+  background: var(--dark-2);
+  border: 1px solid var(--dark-4);
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+  transition: border-color var(--transition);
+}
+
+.search-box:focus-within {
+  border-color: var(--gold);
+}
+
+.search-box input {
+  flex: 1;
+  background: none;
+  border: none;
+  outline: none;
+  padding: 18px 22px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 15px;
+  color: var(--text);
+}
+
+.search-box input::placeholder { color: var(--text-muted); }
+
+.search-box button {
+  background: var(--gold);
+  border: none;
+  padding: 0 28px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--dark);
+  cursor: pointer;
+  transition: var(--transition);
+  letter-spacing: 0.5px;
+}
+
+.search-box button:hover { background: var(--gold-light); }
+
+/* ─── SECTION HEADER ─── */
+.section-header {
+  text-align: center;
+  margin-bottom: 48px;
+}
+
+.section-tag {
+  display: inline-block;
+  font-size: 11px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 12px;
+  font-weight: 600;
+}
+
+.section-header h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(28px, 4vw, 42px);
+  font-weight: 700;
+  color: var(--text);
+  line-height: 1.2;
+}
+
+.section-header p {
+  color: var(--text-muted);
+  margin-top: 10px;
+  font-size: 15px;
+  max-width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* ─── STATS ─── */
+.stats-section {
+  padding: 70px 48px 0;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 20px;
+}
+
+.stat-card {
+  background: var(--dark-2);
+  border: 1px solid var(--dark-4);
+  border-radius: var(--radius);
+  padding: 28px 20px;
+  text-align: center;
+  transition: var(--transition);
+  position: relative;
+  overflow: hidden;
+}
+
+.stat-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: var(--gold);
+  transform: scaleX(0);
+  transition: var(--transition);
+}
+
+.stat-card:hover::before { transform: scaleX(1); }
+.stat-card:hover { border-color: rgba(201,168,76,0.3); transform: translateY(-3px); }
+
+.stat-num {
+  font-family: 'Playfair Display', serif;
+  font-size: 40px;
+  font-weight: 900;
+  color: var(--gold);
+  line-height: 1;
+  margin-bottom: 6px;
+}
+
+.stat-label {
+  font-size: 12px;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+}
+
+/* ─── AGENT PROFILE ─── */
+.profile-section {
+  padding: 80px 48px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.profile-inner {
+  display: grid;
+  grid-template-columns: 1fr 1.6fr;
+  gap: 48px;
+  align-items: center;
+  background: var(--dark-2);
+  border: 1px solid var(--dark-4);
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+.company-logo {
+  width: 120px;
+  object-fit: contain;
+  margin-bottom: 20px;
+  position: relative; z-index: 1;
+  filter: drop-shadow(0 4px 12px rgba(0,0,0,0.3));
+}
+
+.profile-photo-wrap {
+  position: relative;
+  background: linear-gradient(135deg, var(--dark-3), var(--dark-4));
+  padding: 48px 36px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 340px;
+}
+
+.profile-photo-wrap::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: radial-gradient(circle at 50% 50%, rgba(201,168,76,0.08) 0%, transparent 70%);
+}
+
+.profile-photo {
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid var(--gold);
+  box-shadow: 0 0 0 8px rgba(201,168,76,0.12), 0 20px 50px rgba(0,0,0,0.4);
+  position: relative;
+  z-index: 1;
+}
+
+.verified-badge {
+  display: flex; align-items: center; gap: 6px;
+  background: rgba(46,204,113,0.12);
+  border: 1px solid rgba(46,204,113,0.3);
+  color: var(--green);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  padding: 5px 14px;
+  border-radius: 20px;
+  margin-top: 18px;
+  position: relative; z-index: 1;
+}
+
+.verified-dot {
+  width: 6px; height: 6px;
+  background: var(--green);
+  border-radius: 50%;
+  animation: pulse 2s ease infinite;
+}
+
+@keyframes pulse {
+  0%,100% { opacity:1; transform: scale(1); }
+  50% { opacity:0.6; transform: scale(1.4); }
+}
+
+.profile-info {
+  padding: 48px 48px 48px 0;
+}
+
+.profile-tag {
+  font-size: 11px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--gold);
+  font-weight: 600;
+  margin-bottom: 10px;
+  display: block;
+}
+
+.profile-info h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(24px, 3vw, 36px);
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 6px;
+  line-height: 1.2;
+}
+
+.profile-role {
+  color: var(--text-muted);
+  font-size: 14px;
+  margin-bottom: 22px;
+  font-weight: 400;
+}
+
+.profile-desc {
+  color: var(--text-muted);
+  font-size: 14px;
+  line-height: 1.8;
+  margin-bottom: 28px;
+  border-left: 2px solid var(--gold);
+  padding-left: 16px;
+}
+
+.social-btns {
+  display: flex; flex-wrap: wrap; gap: 10px;
+}
+
+.soc-btn {
+  display: inline-flex; align-items: center; gap: 7px;
+  padding: 10px 18px;
+  border-radius: 9px;
+  font-size: 13px;
+  font-weight: 500;
+  text-decoration: none;
+  transition: var(--transition);
+  border: 1px solid transparent;
+}
+
+.soc-btn:hover { transform: translateY(-2px); filter: brightness(1.1); }
+
+.soc-call { background: rgba(46,204,113,0.12); color: var(--green); border-color: rgba(46,204,113,0.25); }
+.soc-wa   { background: rgba(37,211,102,0.12); color: var(--wa); border-color: rgba(37,211,102,0.25); }
+.soc-yt   { background: rgba(229,57,53,0.12); color: #FF5252; border-color: rgba(229,57,53,0.25); }
+.soc-ig   { background: rgba(225,48,108,0.12); color: var(--pink); border-color: rgba(225,48,108,0.25); }
+
+/* ─── FILTER TABS ─── */
+.filter-section {
+  padding: 0 48px;
+  max-width: 1200px;
+  margin: 0 auto 32px;
+}
+
+.filter-tabs {
+  display: flex; gap: 8px; flex-wrap: wrap;
+}
+
+.filter-tab {
+  padding: 8px 18px;
+  border-radius: 25px;
+  border: 1px solid var(--dark-4);
+  background: var(--dark-2);
+  color: var(--text-muted);
+  font-size: 13px;
+  font-family: 'DM Sans', sans-serif;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.filter-tab:hover, .filter-tab.active {
+  background: var(--gold);
+  color: var(--dark);
+  border-color: var(--gold);
+  font-weight: 600;
+}
+
+/* ─── PLOT GRID ─── */
+.plots-section {
+  padding: 0 48px 80px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.plots-header {
+  display: flex; justify-content: space-between; align-items: center;
+  margin-bottom: 32px;
+}
+
+.plot-count {
+  font-size: 13px;
+  color: var(--text-muted);
+}
+
+.plot-count span { color: var(--gold); font-weight: 600; }
+
+.plot-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 22px;
+}
+
+.plot-card {
+  background: var(--dark-2);
+  border: 1px solid var(--dark-4);
+  border-radius: var(--radius);
+  overflow: hidden;
+  transition: var(--transition);
+  position: relative;
+  animation: cardIn 0.5s ease both;
+}
+
+@keyframes cardIn {
+  from { opacity:0; transform: translateY(20px); }
+  to   { opacity:1; transform: translateY(0); }
+}
+
+.plot-card:hover {
+  transform: translateY(-6px);
+  border-color: rgba(201,168,76,0.4);
+  box-shadow: 0 24px 50px rgba(0,0,0,0.35), 0 0 0 1px rgba(201,168,76,0.15);
+}
+
+.plot-card-img {
+  position: relative;
+  height: 190px;
+  overflow: hidden;
+}
+
+.plot-card-img img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s ease;
+}
+
+.plot-card:hover .plot-card-img img { transform: scale(1.07); }
+
+.plot-img-overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(to top, rgba(0,0,0,0.6) 0%, transparent 50%);
+}
+
+.plot-location-tag {
+  position: absolute;
+  bottom: 12px; left: 12px;
+  background: rgba(0,0,0,0.6);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255,255,255,0.12);
+  color: rgba(255,255,255,0.85);
+  font-size: 11px;
+  padding: 4px 10px;
+  border-radius: 20px;
+  letter-spacing: 0.5px;
+}
+
+.plot-badge {
+  position: absolute;
+  top: 12px; right: 12px;
+  background: var(--gold);
+  color: var(--dark);
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  padding: 4px 10px;
+  border-radius: 20px;
+}
+
+.plot-card-body {
+  padding: 18px 18px 20px;
+}
+
+.plot-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 14px;
+  line-height: 1.3;
+}
+
+.plot-meta {
+  display: flex; gap: 10px; margin-bottom: 16px; flex-wrap: wrap;
+}
+
+.plot-chip {
+  background: var(--dark-3);
+  border: 1px solid var(--dark-4);
+  color: var(--text-muted);
+  font-size: 11px;
+  padding: 4px 10px;
+  border-radius: 6px;
+  letter-spacing: 0.5px;
+}
+
+.plot-cta {
+  display: flex; align-items: center; justify-content: space-between;
+}
+
+.plot-price {
+  font-size: 13px;
+  color: var(--text-muted);
+}
+
+.plot-price strong {
+  display: block;
+  font-size: 15px;
+  color: var(--gold);
+  font-weight: 600;
+}
+
+.view-btn {
+  display: inline-flex; align-items: center; gap: 6px;
+  background: var(--gold);
+  color: var(--dark);
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-size: 12px;
+  font-weight: 700;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  transition: var(--transition);
+  letter-spacing: 0.3px;
+}
+
+.view-btn:hover {
+  background: var(--gold-light);
+  transform: translateY(-1px);
+}
+
+.arrow-icon {
+  font-size: 14px;
+  transition: transform var(--transition);
+}
+
+.view-btn:hover .arrow-icon { transform: translateX(3px); }
+
+/* No results */
+.no-results {
+  text-align: center;
+  padding: 60px 20px;
+  color: var(--text-muted);
+  grid-column: 1/-1;
+}
+
+.no-results h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 24px;
+  margin-bottom: 8px;
+  color: var(--text);
+}
+
+/* ─── MAP ─── */
+.map-section {
+  padding: 0 48px 80px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.map-inner {
+  background: var(--dark-2);
+  border: 1px solid var(--dark-4);
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+.map-head {
+  padding: 28px 32px;
+  border-bottom: 1px solid var(--dark-4);
+  display: flex; align-items: center; justify-content: space-between;
+}
+
+.map-head h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 22px;
+  font-weight: 700;
+}
+
+.map-tag {
+  font-size: 11px;
+  color: var(--text-muted);
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+}
+
+.map-inner iframe {
+  display: block;
+  width: 100%;
+  height: 380px;
+  border: none;
+  filter: grayscale(30%) contrast(1.05);
+}
+
+/* ─── FOOTER ─── */
+.footer {
+  background: var(--dark-2);
+  border-top: 1px solid var(--dark-4);
+  padding: 40px 48px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.footer-brand {
+  font-family: 'Playfair Display', serif;
+  font-size: 18px;
+  color: var(--gold);
+  font-weight: 700;
+}
+
+.footer-copy {
+  font-size: 13px;
+  color: var(--text-muted);
+}
+
+.footer-links {
+  display: flex; gap: 20px;
+}
+
+.footer-links a {
+  color: var(--text-muted);
+  text-decoration: none;
+  font-size: 13px;
+  transition: color var(--transition);
+}
+
+.footer-links a:hover { color: var(--gold); }
+
+/* ─── FLOAT WA ─── */
+.float-wa {
+  position: fixed;
+  bottom: 28px; right: 28px;
+  width: 54px; height: 54px;
+  background: var(--wa);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 24px;
+  box-shadow: 0 8px 25px rgba(37,211,102,0.4);
+  cursor: pointer;
+  text-decoration: none;
+  z-index: 998;
+  transition: var(--transition);
+  animation: floatIn 0.5s ease 1s both;
+}
+
+@keyframes floatIn {
+  from { transform: scale(0); opacity: 0; }
+  to   { transform: scale(1); opacity: 1; }
+}
+
+.float-wa:hover {
+  transform: scale(1.1);
+  box-shadow: 0 12px 35px rgba(37,211,102,0.5);
+}
+
+.float-wa::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  border: 2px solid rgba(37,211,102,0.5);
+  animation: ripple 2s ease infinite;
+}
+
+@keyframes ripple {
+  0%   { transform: scale(1); opacity:1; }
+  100% { transform: scale(1.7); opacity:0; }
+}
+
+/* ─── RESPONSIVE ─── */
+@media (max-width: 900px) {
+  .navbar { padding: 14px 24px; }
+  .navbar.scrolled { padding: 10px 24px; }
+  .profile-inner { grid-template-columns: 1fr; }
+  .profile-photo-wrap { min-height: 260px; }
+  .profile-info { padding: 0 28px 36px; }
+  .stats-section, .profile-section, .filter-section, .plots-section, .map-section { padding-left: 24px; padding-right: 24px; }
+  .footer { padding: 28px 24px; }
+}
+
+@media (max-width: 600px) {
+  .nav-links a:not(.nav-cta) { display: none; }
+  .hero h1 { font-size: 32px; }
+  .hero-actions { flex-direction: column; align-items: center; }
+  .search-wrap { margin-top: -28px; }
 }
 
 </style>
@@ -269,235 +965,297 @@ transition:opacity .4s ease;
 <body>
 
 <!-- NAVBAR -->
-
-<div class="navbar">
-
-<div class="logo">
-<img src="logo.png">
-</div>
-
-<div class="nav-links">
-
-<a onclick="toggleTheme()">🌙 Theme</a>
-
-<a href="tel:7339652776">📞 Call</a>
-
-</div>
-
-</div>
-
-<!-- TITLE -->
-
-<div class="title">
-MADRAS CITY PROPERTIES.COM
-</div>
+<nav class="navbar" id="navbar">
+  <div class="logo-wrap">
+    <img src="images/logo.png" alt="Logo" onerror="this.style.display='none'">
+    <div class="logo-text">
+      <span class="brand">Madras City Properties.com</span>
+      <span class="branch">Avadi Branch</span>
+    </div>
+  </div>
+  <div class="nav-links">
+    <button class="theme-btn" onclick="toggleTheme()">☀️</button>
+    <a href="#plots-section">Properties</a>
+    <a href="#agent-section">GM </a>
+    <a href="#map-section">Location</a>
+    <a class="nav-cta" href="tel:7339652776">📞 Call Now</a>
+  </div>
+</nav>
 
 <!-- HERO -->
-
-<div class="hero">
-
-<h1>
-FIND YOUR DREAM PLOT IN AND AROUND CHENNAI
-</h1>
-
-<div class="locations">
-
-AVADI | POONAMALLE | OMR SIRUSERI | THIRUMAZHISAI |
-GERUGAMBAKKAM | SP KOVIL
-
-</div>
-
-<div class="tamil-slogan">
-
-இன்றைய முதலீடு நாளைய கனவு இல்லம்..
-
-</div>
-
-</div>
-
-<!-- PROFILE -->
-
-<div class="profile">
-
-<img src="PHOTO.jpeg">
-
-<h2>Mr. T. Meenakshi Sundaram</h2>
-
-<p>General Manager</p>
-
-<div class="buttons">
-
-<a class="call-btn" href="tel:7339652776">📞 Call Now</a>
-
-<a class="whatsapp-btn"
-href="https://wa.me/917339652776?text=Plot%20Enquiry">
-💬 WhatsApp
-</a>
-
-<a class="youtube-btn"
-href="https://youtube.com/@universaldreamplots"
-target="_blank">
-▶ YouTube Channel
-</a>
-
-<a class="instagram-btn"
-href="https://www.instagram.com/sundartmmeenakshi"
-target="_blank">
-📷 Instagram Profile
-</a>
-
-</div>
-
-</div>
+<section class="hero">
+  <div class="hero-slides" id="hero-slides">
+    <img src="images/plot1.jpeg" class="active" alt="">
+    <img src="images/plot2.jpeg" alt="">
+    <img src="images/plot3.jpeg" alt="">
+    <img src="images/plot4.jpeg" alt="">
+    <img src="images/plot5.jpeg" alt="">
+  </div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <div class="hero-badge">✦ Premium Real Estate ✦</div>
+    <h1>Find Your Dream<br><span>Plot in and around  Chennai</span></h1>
+    <p class="hero-sub">Your trusted partner for premium plots in Chennai</p>
+    <div class="hero-locations">
+      <span>Avadi</span>
+      <span>Poonamalle</span>
+      <span>OMR</span>
+      <span>Thirumazhisai</span>
+      <span>Gerugambakkam</span>
+    </div>
+    <p class="hero-tamil">இன்றைய முதலீடு நாளைய கனவு இல்லம்..</p>
+    <div class="hero-actions">
+      <a href="#plots-section" class="btn-primary">View Properties →</a>
+      <a href="https://wa.me/917339652776" class="btn-outline">💬 WhatsApp Us</a>
+    </div>
+  </div>
+  <div class="slide-dots" id="slide-dots"></div>
+  <div class="scroll-hint">Scroll</div>
+</section>
 
 <!-- SEARCH -->
-
-<div class="search">
-
-<input type="text"
-id="searchInput"
-placeholder="Search plots..."
-onkeyup="searchPlots()">
-
+<div class="search-wrap">
+  <div class="search-box">
+    <input type="text" id="searchInput" placeholder="Search by project name or location…" oninput="searchPlots(this.value)">
+    <button onclick="searchPlots(document.getElementById('searchInput').value)">Search</button>
+  </div>
 </div>
 
-<!-- PROPERTY LIST -->
+<!-- STATS -->
+<section class="stats-section" style="padding-top:70px;">
+  <div class="stats-grid">
+    <div class="stat-card"><div class="stat-num">27+</div><div class="stat-label">Projects</div></div>
+    <div class="stat-card"><div class="stat-num">10+</div><div class="stat-label">Locations</div></div>
+    <div class="stat-card"><div class="stat-num">100%</div><div class="stat-label">DTCP Approved</div></div>
+    <div class="stat-card"><div class="stat-num">₹</div><div class="stat-label">Best Price Guarantee</div></div>
+  </div>
+</section>
 
-<div class="container" id="plots"></div>
+<!-- AGENT PROFILE -->
+<section class="profile-section" id="agent-section">
+  <div class="section-header">
+    <div class="section-tag">Meet Your General Manager</div>
+    <h2>Your Trusted Property Advisor</h2>
+    <p>Expert guidance for your real estate journey in Chennai</p>
+  </div>
+  <div class="profile-inner">
+    <div class="profile-photo-wrap">
+      <img src="images/logo.png" class="company-logo" alt="Madras City Properties Logo" onerror="this.style.display='none'">
+      <img src="images/PHOTO.jpeg" class="profile-photo" alt="Mr. T. Meenakshi Sundaram" onerror="this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22140%22 height=%22140%22><rect fill=%22%232A2A2A%22 width=%22140%22 height=%22140%22/><text x=%2270%22 y=%2278%22 fill=%22%23C9A84C%22 text-anchor=%22middle%22 font-size=%2248%22>MS</text></svg>'">
+      <div class="verified-badge"><div class="verified-dot"></div> Verified Agent</div>
+    </div>
+    <div class="profile-info">
+      <span class="profile-tag">General Manager</span>
+      <h2>Mr. T. Meenakshi Sundaram</h2>
+      <p class="profile-role">Madras City Properties.com — Avadi Branch</p>
+      <p class="profile-desc">I help families find their perfect plot at the right price. Specialising in residential developments across Avadi, Poonamalle, OMR, and surrounding corridors.</p>
+      <div class="social-btns">
+        <a class="soc-btn soc-call" href="tel:7339652776">📞 +91 7339 652 776</a>
+        <a class="soc-btn soc-wa"   href="https://wa.me/917339652776" target="_blank">💬 WhatsApp</a>
+        <a class="soc-btn soc-yt"   href="https://youtube.com/@universaldreamplots" target="_blank">▶ YouTube</a>
+        <a class="soc-btn soc-ig"   href="https://www.instagram.com/sundartmmeenakshi" target="_blank">◈ Instagram</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PLOTS -->
+<div class="filter-section" id="plots-section">
+  <div class="section-header">
+    <div class="section-tag">Our Portfolio</div>
+    <h2>Premium Plot Developments</h2>
+    <p>DTCP approved, clear title plots across Chennai's fastest growing corridors</p>
+  </div>
+  <div class="filter-tabs" id="filter-tabs">
+    <button class="filter-tab active" onclick="filterByArea('All', this)">All Projects</button>
+    <button class="filter-tab" onclick="filterByArea('Avadi', this)">Avadi</button>
+    <button class="filter-tab" onclick="filterByArea('Paruthipattu', this)">Paruthipattu</button>
+    <button class="filter-tab" onclick="filterByArea('Thirunindravur', this)">Thirunindravur</button>
+    <button class="filter-tab" onclick="filterByArea('Veppampattu', this)">Veppampattu</button>
+    <button class="filter-tab" onclick="filterByArea('Siruseri', this)">Siruseri</button>
+    <button class="filter-tab" onclick="filterByArea('Other', this)">Other Areas</button>
+  </div>
+</div>
+
+<section class="plots-section">
+  <div class="plots-header">
+    <p class="plot-count"><span id="visible-count">27</span> properties found</p>
+  </div>
+  <div class="plot-grid" id="plots"></div>
+</section>
 
 <!-- MAP -->
+<section class="map-section" id="map-section">
+  <div class="section-header">
+    <div class="section-tag">Visit Us</div>
+    <h2>Office Location</h2>
+    <p>Come visit our Avadi branch for a personal consultation</p>
+  </div>
+  <div class="map-inner">
+    <div class="map-head">
+      <div>
+        <div class="map-tag">Avadi, Chennai</div>
+        <h3>Madras City Properties Office</h3>
+      </div>
+      <a href="https://maps.google.com/maps?q=paruthipattu" target="_blank" class="view-btn">Get Directions <span class="arrow-icon">→</span></a>
+    </div>
+    <iframe src="https://maps.google.com/maps?q=paruthipattu&t=&z=15&output=embed" allowfullscreen loading="lazy"></iframe>
+  </div>
+</section>
 
-<div class="map">
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-brand">Madras City Properties.com</div>
+  <div class="footer-copy">© 2025 Madras City Properties.com. All Rights Reserved.</div>
+  <div class="footer-links">
+    <a href="tel:7339652776">Contact</a>
+    <a href="https://wa.me/917339652776">WhatsApp</a>
+    <a href="#plots-section">Properties</a>
+  </div>
+</footer>
 
-<h2>Office Location</h2>
-
-<iframe src="https://maps.google.com/maps?q=paruthipattu&t=&z=15&output=embed"></iframe>
-
-<br><br>
-
-<a href="https://maps.app.goo.gl/wmLLyMKPGeHFjxHf6" target="_blank">
-
-<button>Open in Google Maps</button>
-
-</a>
-
-</div>
-
-<div class="footer">
-
-<p>© Madras City Properties | All Rights Reserved</p>
-
-</div>
+<!-- FLOAT WA -->
+<a class="float-wa" href="https://wa.me/917339652776" target="_blank">💬</a>
 
 <script>
 
-/* DARK THEME */
+/* ─── DATA ─── */
+const plots = [
+  ["RAINBOW GARDEN",        "Avadi",                "Avadi"],
+  ["GARDENIA",              "Soranjeri, Avadi",     "Avadi"],
+  ["GREEN FIELD",           "Avadi",                "Avadi"],
+  ["SINGAPORE SMART CITY",  "Avadi",                "Avadi"],
+  ["PANDIAN ELITE GARDEN",  "Avadi",                "Avadi"],
+  ["VARSHA GARDEN",         "Paruthipattu",         "Paruthipattu"],
+  ["R R CHENDUR PARADISE",  "Paruthipattu",         "Paruthipattu"],
+  ["CHENDUR AVENUE",        "Kannapalaiyam",        "Other"],
+  ["VALLALAR NAGAR",        "Kavarapalayam",        "Other"],
+  ["KANNAPA NAGAR",         "Pattabiram",           "Other"],
+  ["VARSHA MASILAMANI NAGAR","Parivakkam",          "Other"],
+  ["JJ ROYAL ENCLAVE",      "Siruseri",             "Siruseri"],
+  ["SRI SUBRAMANYAPURAM",   "Thirunindravur",       "Thirunindravur"],
+  ["JJ GOLDEN CITY",        "Veppampattu",          "Veppampattu"],
+  ["SRI RAGAVENDRA GARDEN", "Thirunindravur",       "Thirunindravur"],
+  ["SVS NAGAR",             "Singaperumal Kovil",   "Other"],
+  ["EASWARI GARDEN",        "Padappai",             "Other"],
+  ["SAPTHAGIRI NAGAR",      "Thiruvallur",          "Other"],
+  ["SRI SAI CITY",          "Palavedu",             "Other"],
+  ["JJ GOLDEN PARADISE",    "Veppampattu",          "Veppampattu"],
+  ["SARAVANA GARDEN",       "Thirunindravur",       "Thirunindravur"],
+  ["ORCHID CASTLE",         "Malayambakkam",        "Other"],
+  ["VARSHA GOLDEN GATE",    "Thirumazhisai",        "Other"],
+  ["SAI KUMARAN NAGAR",     "Pothur",               "Other"],
+  ["SHRI KAILASH GARDEN",   "Gerugambakkam",        "Other"],
+  ["EMPIRE ELITE GARDEN",   "Avadi",                "Avadi"],
+  ["TEMPLE CITY",           "Kundrathur",           "Other"],
+];
 
-function toggleTheme(){
-document.body.classList.toggle("dark")
+const badges = ["New Launch","Featured","Prime Location","Hot Selling","DTCP Approved","Best Value"];
+
+const plotImages = [
+  "images/plot1.jpeg","images/plot2.jpeg","images/plot3.jpeg","images/plot4.jpeg","images/plot5.jpeg",
+  "images/plot6.jpeg","images/plot7.jpeg","images/plot8.jpeg","images/plot9.jpeg","images/plot10.jpeg",
+  "images/plot11.jpeg","images/plot12.jpeg","images/plot13.jpeg","images/plot14.jpeg","images/plot15.jpeg",
+  "images/plot16.jpeg","images/plot17.jpeg","images/plot18.jpeg","images/plot19.jpeg","images/plot20.jpeg",
+  "images/plot21.jpeg","images/plot22.jpeg","images/plot23.jpeg","images/plot24.jpeg","images/plot25.jpeg",
+  "images/plot26.jpeg","images/plot27.jpeg"
+];
+
+/* ─── RENDER PLOTS ─── */
+const grid = document.getElementById("plots");
+let activeSearch = "";
+let activeArea = "All";
+
+function renderPlots() {
+  grid.innerHTML = "";
+  let visible = 0;
+  plots.forEach((plot, i) => {
+    const name = plot[0], loc = plot[1], area = plot[2];
+    const searchMatch = !activeSearch || name.toLowerCase().includes(activeSearch) || loc.toLowerCase().includes(activeSearch);
+    const areaMatch = activeArea === "All" || area === activeArea;
+    if (!searchMatch || !areaMatch) return;
+    visible++;
+    const delay = (visible - 1) * 40;
+    const badge = i < 6 ? `<div class="plot-badge">${badges[i]}</div>` : "";
+    const imgSrc = plotImages[i] || `plot${i+1}.jpeg`;
+    grid.innerHTML += `
+    <div class="plot-card" style="animation-delay:${delay}ms">
+      <div class="plot-card-img">
+        <img src="${imgSrc}" alt="${name}" loading="lazy" onerror="this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22400%22 height=%22190%22><rect fill=%22%231F1F1F%22 width=%22400%22 height=%22190%22/><text x=%22200%22 y=%22100%22 fill=%22%23C9A84C%22 text-anchor=%22middle%22 font-size=%2222%22 font-family=%22serif%22>${name.split(' ')[0]}</text></svg>'">
+        <div class="plot-img-overlay"></div>
+        <div class="plot-location-tag">📍 ${loc}</div>
+        ${badge}
+      </div>
+      <div class="plot-card-body">
+        <div class="plot-title">${name}</div>
+        <div class="plot-meta">
+          <span class="plot-chip">✓ DTCP</span>
+          <span class="plot-chip">Clear Title</span>
+          <span class="plot-chip">Residential</span>
+        </div>
+        <div class="plot-cta">
+          <div class="plot-price">
+            <span>Starting from</span>
+            <strong>Get Best Price</strong>
+          </div>
+          <a href="site${i+1}.html" class="view-btn">Details <span class="arrow-icon">→</span></a>
+        </div>
+      </div>
+    </div>`;
+  });
+  if (visible === 0) {
+    grid.innerHTML = `<div class="no-results"><h3>No properties found</h3><p>Try a different search term or area filter.</p></div>`;
+  }
+  document.getElementById("visible-count").textContent = visible;
 }
 
-/* PROPERTY DATA */
-
-const plots=[
-
-["RAINBOW GARDEN","Avadi"],
-["GARDENIA","Soranjeri Avadi"],
-["GREEN FIELD","Avadi"],
-["SINGAPORE SMART CITY","Avadi"],
-["PANDIAN ELITE GARDEN","Avadi"],
-["VARSHA GARDEN","Paruthipattu"],
-["R R CHENDUR PARADISE","Paruthipattu"],
-["CHENDUR AVENUE","Kannapalaiyam"],
-["VALLALAR NAGAR","Kavarapalayam"],
-["KANNAPA NAGAR","Pattabiram"],
-["VARSHA MASLIAMANI NAGAR","Parivakkam"],
-["JJ ROYAL ENCLAVE","Siruseri OMR"],
-["SRI SUBRAMANYAPURAM NAGAR","Thirunindravur"],
-["JJ GOLDEN CITY","Veppampattu"],
-["SRI RAGAVENDRA GARDEN ANNEX","Thirunindravur"],
-["SVS NAGAR","Singaperumal Kovil"],
-["EASWARI GARDEN","Padappai"],
-["SAPTHAGIRI NAGAR","Thiruvallur"],
-["SRI SAI CITY","Palavedu Avadi"],
-["JJ GOLDEN PARADISE","Veppampattu"],
-["SARAVANA GARDEN","Thirunindravur"],
-["ORCHID CASTLE","Malayambakkam Poonamallee"],
-["VARSHA GOLDEN GATE","Thirumazhisai"],
-["SAI KUMARAN NAGAR","Pothur"],
-["SHRI KAILASH GARDEN","Gerugambakkam"],
-["EMPIRE ELITE GARDEN","Kannapalaiyam Avadi"],
-["TEMPLE CITY","Kundrathur"]
-
-]
-
-const container=document.getElementById("plots")
-
-plots.forEach((plot,i)=>{
-
-container.innerHTML+=`
-
-<div class="card">
-
-<img src="plot${i+1}.jpeg">
-
-<div class="card-content">
-
-<h3>${plot[0]}</h3>
-
-<p>${plot[1]}</p>
-
-<a href="site${i+1}.html" class="view-btn">
-
-<button>View Details</button>
-
-</a>
-
-</div>
-
-</div>
-
-`
-
-})
-
-/* SEARCH */
-
-function searchPlots(){
-
-let input=document.getElementById("searchInput").value.toLowerCase()
-
-let cards=document.getElementsByClassName("card")
-
-for(let i=0;i<cards.length;i++){
-
-let title=cards[i].innerText.toLowerCase()
-
-if(title.includes(input)){
-cards[i].style.display="block"
-}else{
-cards[i].style.display="none"
+function searchPlots(val) {
+  activeSearch = val.toLowerCase().trim();
+  renderPlots();
 }
 
+function filterByArea(area, btn) {
+  activeArea = area;
+  document.querySelectorAll('.filter-tab').forEach(t => t.classList.remove('active'));
+  btn.classList.add('active');
+  renderPlots();
 }
 
+renderPlots();
+
+/* ─── HERO SLIDER ─── */
+const slides = document.querySelectorAll(".hero-slides img");
+const dotsContainer = document.getElementById("slide-dots");
+let current = 0;
+
+slides.forEach((_, i) => {
+  const d = document.createElement("div");
+  d.className = "dot" + (i === 0 ? " active" : "");
+  d.onclick = () => goTo(i);
+  dotsContainer.appendChild(d);
+});
+
+function goTo(n) {
+  slides[current].classList.remove("active");
+  dotsContainer.children[current].classList.remove("active");
+  current = n;
+  slides[current].classList.add("active");
+  dotsContainer.children[current].classList.add("active");
 }
 
-/* PAGE TRANSITION */
+setInterval(() => goTo((current + 1) % slides.length), 4500);
 
-document.querySelectorAll(".view-btn").forEach(link=>{
-link.addEventListener("click",function(e){
+/* ─── NAVBAR SCROLL ─── */
+window.addEventListener("scroll", () => {
+  document.getElementById("navbar").classList.toggle("scrolled", window.scrollY > 60);
+});
 
-e.preventDefault()
-
-document.body.classList.add("fade-out")
-
-setTimeout(()=>{
-window.location=this.href
-},400)
-
-})
-})
+/* ─── THEME ─── */
+function toggleTheme() {
+  document.body.classList.toggle("light");
+  const btn = document.querySelector('.theme-btn');
+  btn.textContent = document.body.classList.contains('light') ? '🌙' : '☀️';
+}
 
 </script>
 
